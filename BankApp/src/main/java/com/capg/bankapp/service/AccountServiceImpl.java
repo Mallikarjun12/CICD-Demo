@@ -30,7 +30,7 @@ public class AccountServiceImpl implements IAccountService{
 		account.setAccountNo(AccountUtil.generateAccountNo());
 		account.setCustomer(customer);
 		account.setOpeningBalance(amount);
-		
+		System.out.println(account +"\t"+account.hashCode());
 		boolean flag=accountDao.saveAccount(account);
 		if(flag)
 				return account;
