@@ -37,7 +37,7 @@ public class BankAppTestCases {
 		customer.setAddress(new Address("12/A, North Avvenue", "Chennai"));
 		customer.setCustomerName("Tom");
 		customer.setCustomerId(1234);
-		
+		System.out.println(customer +"\t"+ customer.hashCode());
 		Account account=new Account();
 		account.setAccountNo(123);
 		account.setCustomer(customer);
