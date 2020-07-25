@@ -1,0 +1,156 @@
+Test case
+
+
+mockito framework
+
+TDD
+
+
+
+
+TDD - Test Driven Development
+
+first test case
+then development
+
+
+
+
+design of classes and interface
+identifying exact number of test cases
+
+
+10 years survey
+64% features implemented in a project either rarely used or not used at all
+
+Banking Application
+----------------------
+
+
+bean/model layer
+exceptions layer
+repo layer
+service layer
+test layer
+
+Layered architecture
+-easy to test and development
+
+
+Pinacle software - Banks  ICICI - Infosys - 5 years
+
+com.capgemini.beans
+Account
+
+   int accountNumber;
+   int amount;//double
+
+
+com.capgemini.exceptions
+InvalidAccountNumberException 
+InsufficientBalanceException
+InsufficientOpeningBalanceException - min Rs 500 is required
+
+com.capgemini.repo
+AccountRepo(I)
+public boolean save(Account account)
+Account searchAccount(int account);
+
+
+com.capgemini.service
+AccountService(I)
+Account createAccount(int accountNumber,int amount)throws InsufficientOpeningBalanceException;
+int withdrawAmount(int accountNumber,int amount)throws InvalidAccountNumberException,InsufficientBalanceException;
+
+depositAmount
+
+
+AccountServiceImpl
+  //AccountRepo accountRepo =new AccountRepoImpl();
+ AccountRepo accountRepo;
+   AccountServiceImpl(AccountRepo accountRepo)               //constructor injection
+  {
+      this.accountRepo = accountRepo;
+  }
+
+com.capgemini.test
+AccountServiceTest
+ AccountService accountService = new AccountServiceImpl();
+
+  @Mock
+  AccountRepository accountRepository;
+rt.jar      mockito.jar
+
+@Before
+	public void setUp() throws Exception {
+		MockitoAnnotations.initMocks(this);  //mock object is created
+		
+		accountService = new AccountServiceImpl(accountRepository);
+	}
+
+
+Test cases
+createAccount
+1) when the valid info(account number - 101,amount - Rs 5000) is passed account should be created successfully
+2) when the amount is less than 500 system should generate exception
+
+
+withdrawAmount
+1) invalid account
+2) insufficient balance
+3) success
+
+depositAmount
+1) invalid account
+2) success
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
